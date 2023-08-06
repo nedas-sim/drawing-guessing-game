@@ -1,5 +1,5 @@
 using Avalonia.Controls;
-using DrawingGame.Controllers;
+using DrawingGame.Controllers.Brush;
 using System;
 
 namespace DrawingGame;

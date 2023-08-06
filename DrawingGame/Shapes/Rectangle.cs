@@ -1,15 +1,20 @@
-﻿using Avalonia.Controls;
+﻿using Avalonia;
+using Avalonia.Controls;
 using Avalonia.Media;
+using DrawingGame.Shapes.Abstractions;
 using System.Collections.Generic;
 
 namespace DrawingGame.Shapes;
 
-public class Rectangle : IShape
+public readonly struct Rectangle : ICenteredShape
 {
-    private Coordinate topLeft, bottomRight;
-    private Color color;
+    public readonly Coordinate Center => rectBoundary.Center;
 
-    private RectangleBoundary rectBoundary;
+    private readonly Coordinate topLeft;
+    private readonly Coordinate bottomRight;
+    private readonly Color color;
+
+    private readonly RectangleBoundary rectBoundary;
 
     private Rectangle(int topLeftX, int topLeftY, int height, int width, Color color, Image canvasImage)
     {
@@ -28,6 +33,22 @@ public class Rectangle : IShape
     public static Rectangle FromTopLeftAndDimensions(Coordinate topLeft, int height, int width, Color color, Image canvasImage)
     {
         return FromTopLeftAndDimensions(topLeft.X, topLeft.Y, height, width, color, canvasImage);
+    }
+
+    public static Rectangle SquareFromCenterAndSideLength(Point centerPoint, int sideLength, Color color, Image canvasImage)
+    {
+        int topLeftX = (int)centerPoint.X - sideLength / 2;
+        int topLeftY = (int)centerPoint.Y - sideLength / 2;
+
+        return FromTopLeftAndDimensions(topLeftX, topLeftY, sideLength, sideLength, color, canvasImage);
+    }
+
+    public static Rectangle SquareFromCenterAndSideLength(Coordinate centerPoint, int sideLength, Color color, Image canvasImage)
+    {
+        int topLeftX = centerPoint.X - sideLength / 2;
+        int topLeftY = centerPoint.Y - sideLength / 2;
+
+        return FromTopLeftAndDimensions(topLeftX, topLeftY, sideLength, sideLength, color, canvasImage);
     }
 
     public IEnumerable<Pixel> GetShapePixels()

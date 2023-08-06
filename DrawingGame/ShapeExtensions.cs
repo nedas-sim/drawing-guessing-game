@@ -1,6 +1,7 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
 using DrawingGame.Shapes;
+using DrawingGame.Shapes.Abstractions;
 using System;
 using System.Collections.Generic;
 
@@ -52,4 +53,7 @@ public static class ShapeExtensions
 
     public static IEnumerable<Coordinate> GetPointsOnLine(Coordinate point1, Point point2)
         => GetPointsOnLine(point1.X, point1.Y, (int)point2.X, (int)point2.Y);
+
+    public static IEnumerable<Coordinate> GetPointsOnLine(Coordinate point1, Coordinate point2)
+        => GetPointsOnLine(point1.X, point1.Y, point2.X, point2.Y);
 }

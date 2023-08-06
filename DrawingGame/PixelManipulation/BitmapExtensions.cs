@@ -1,6 +1,6 @@
 ﻿using Avalonia.Media;
 using Avalonia.Media.Imaging;
-using DrawingGame.Shapes;
+using DrawingGame.Shapes.Abstractions;
 using System.Collections.Generic;
 
 namespace DrawingGame.PixelManipulation;

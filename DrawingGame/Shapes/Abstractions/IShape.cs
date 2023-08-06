@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace DrawingGame.Shapes;
+namespace DrawingGame.Shapes.Abstractions;
 
 public interface IShape
 {
