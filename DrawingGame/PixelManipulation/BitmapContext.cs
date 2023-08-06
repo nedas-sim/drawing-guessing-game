@@ -5,7 +5,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System;
 
-namespace DrawingGame;
+namespace DrawingGame.PixelManipulation;
 
 public enum ReadWriteMode
 {
@@ -101,9 +101,9 @@ public class BitmapContext : IDisposable
                 {
                     for (var i = 0; i < length; i++)
                     {
-                        dstPtr[i] = (srcPtr[i * 4 + 3] << 24)
-                                    | (srcPtr[i * 4 + 2] << 16)
-                                    | (srcPtr[i * 4 + 1] << 8)
+                        dstPtr[i] = srcPtr[i * 4 + 3] << 24
+                                    | srcPtr[i * 4 + 2] << 16
+                                    | srcPtr[i * 4 + 1] << 8
                                     | srcPtr[i * 4 + 0];
                     }
                 }
@@ -181,9 +181,9 @@ public class BitmapContext : IDisposable
                     for (var i = 0; i < length; i++, b += 4)
                     {
                         var p = srcPtr[i];
-                        buffer[b + 3] = (byte)((p >> 24) & 0xff);
-                        buffer[b + 2] = (byte)((p >> 16) & 0xff);
-                        buffer[b + 1] = (byte)((p >> 8) & 0xff);
+                        buffer[b + 3] = (byte)(p >> 24 & 0xff);
+                        buffer[b + 2] = (byte)(p >> 16 & 0xff);
+                        buffer[b + 1] = (byte)(p >> 8 & 0xff);
                         buffer[b + 0] = (byte)(p & 0xff);
                     }
 
