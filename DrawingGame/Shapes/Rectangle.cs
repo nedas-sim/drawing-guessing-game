@@ -1,11 +1,12 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Media;
+using DrawingGame.Shapes.Abstractions;
 using System.Collections.Generic;
 
 namespace DrawingGame.Shapes;
 
-public readonly struct Rectangle : IShape
+public readonly struct Rectangle : ICenteredShape
 {
     public readonly Coordinate Center => rectBoundary.Center;
 

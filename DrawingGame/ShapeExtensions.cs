@@ -1,6 +1,7 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
 using DrawingGame.Shapes;
+using DrawingGame.Shapes.Abstractions;
 using System;
 using System.Collections.Generic;
 
